@@ -14,7 +14,7 @@ module.exports = {
     },
     plugins: ["react"],
     rules: {
-        indent: ["error", 4],
+        indent: ["error", 4, { SwitchCase: 1 }],
         "comma-dangle": [
             "error",
             {
