@@ -4,16 +4,16 @@
  * @returns string className
  */
 export const pickColor = (technology) => {
-  switch (technology) {
-    case "html":
-      return " bg-success";
-    case "react":
-      return " bg-info";
-    case "css":
-      return " bg-warning";
-    case "javaScript":
-      return " bg-danger";
-    default:
-      return "";
-  }
+    switch (technology) {
+        case "html":
+            return " bg-success";
+        case "react":
+            return " bg-info";
+        case "css":
+            return " bg-warning";
+        case "javaScript":
+            return " bg-danger";
+        default:
+            return "";
+    }
 };
