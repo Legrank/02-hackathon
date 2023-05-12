@@ -1,7 +1,8 @@
-import './App.css'
+import React from "react";
+import "./App.css";
 
 function App() {
-  return <div className="App">Hackathon</div>
+    return <div className="App">Hackathon</div>;
 }
 
-export default App
+export default App;
