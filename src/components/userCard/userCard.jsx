@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import "./userCard.css";
 import { useHistory } from "react-router-dom";
 
-const UserCard = ({ name, photo, age, about }) => {
+const UserCard = ({ name, photo, age, about, _id }) => {
     const history = useHistory();
     const handleClick = () => {
-        history.push("/users");
+        history.push(`/users/${_id}`);
     };
     const handleFavouriteClick = () => {
         console.log("Add to favourite");
@@ -49,6 +49,7 @@ const UserCard = ({ name, photo, age, about }) => {
     );
 };
 UserCard.propTypes = {
+    _id: PropTypes.string,
     name: PropTypes.string,
     photo: PropTypes.string,
     age: PropTypes.string,

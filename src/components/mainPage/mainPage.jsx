@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import UserCard from "../userCard";
 import stacks from "../../api/stacs.json";
-import developers from "../../api/developers.json";
 import "./mainPage.css";
+import { useSelector } from "react-redux";
+import { getLoadingStatus, getUsersSelector } from "../../redux/users";
 
 const MainPage = () => {
-    const [users] = useState(developers);
+    const loadingStatus = useSelector(getLoadingStatus());
+
+    const users = useSelector(getUsersSelector());
+    if (loadingStatus) return "Загрузка";
 
     return (
         <div className="main-page">

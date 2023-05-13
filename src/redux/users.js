@@ -6,7 +6,6 @@ const initialState = {
     isLoading: true,
     error: null,
     dataLoaded: false,
-    currentUser: null,
 };
 
 const usersSlice = createSlice({
@@ -42,6 +41,13 @@ export const loadUsersList = () => async (dispatch) => {
 };
 
 // selectors
-export const getUsersSelector = () => (state) => state.users.entities;
+export const getUsersSelector = () => (state) => {
+    const users = state.users.entities;
+    return users ? Object.values(users) : [];
+};
+export const getUsersById = (userId) => (state) => {
+    return state.users.entities ? state.users.entities[userId] : null;
+};
+export const getLoadingStatus = () => (state) => state.users.isLoading;
 
 export default usersReducer;

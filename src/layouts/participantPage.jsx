@@ -1,10 +1,15 @@
-/* eslint-disable */
 import React from "react";
 import PropTypes from "prop-types";
-import ProgressBar from "./progressBar";
+import ProgressBar from "../components/progressBar";
 import { pickIcon } from "../utils/pickIcon";
+import { useSelector } from "react-redux";
+import { getUsersById } from "../redux/users";
+import { useParams } from "react-router";
 
-const ParticipantPage = ({ user }) => {
+const ParticipantPage = () => {
+    const { userId } = useParams();
+    const user = useSelector(getUsersById(userId));
+    if (!user) return "Загрузка";
     const pickColorForTech = (technology) => {
         const colors = ["green", "primary", "yellow", "red", "cyan"];
         switch (technology) {
@@ -33,7 +38,7 @@ const ParticipantPage = ({ user }) => {
                     <img
                         src={IMG_URL}
                         width="400px"
-                        heigth="700px"
+                        height="700px"
                         alt="pizza"
                     />
                 </div>
@@ -49,6 +54,7 @@ const ParticipantPage = ({ user }) => {
                                 return key === "vk" ? (
                                     <a
                                         target="_blank"
+                                        rel="noreferrer"
                                         key={key}
                                         href={user.social[key]}
                                     >
@@ -57,6 +63,7 @@ const ParticipantPage = ({ user }) => {
                                 ) : (
                                     <a
                                         target="_blank"
+                                        rel="noreferrer"
                                         key={key}
                                         href={user.social[key]}
                                     >
