@@ -3,13 +3,12 @@ import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
 import NotFound from "./layouts/notFound";
 import NavBar from "./components/navBar";
-import Main from "./layouts/main";
-import Test1 from "./layouts/test1";
 import Breadcrumbs from "./components/breadcrumbs";
-import Test2 from "./layouts/test2";
 import Favorites from "./layouts/favorites";
 import { useDispatch } from "react-redux";
 import { loadUsersList } from "./redux/users";
+import ParticipantPage from "./layouts/participantPage";
+import Main from "./layouts/main";
 
 function App() {
     const dispatch = useDispatch();
@@ -26,9 +25,12 @@ function App() {
             <Switch>
                 <Route path="/" exact component={Main} />
                 <Route path="/404" component={NotFound} />
-                <Route path="/users" exact component={Test1} />
+                <Route
+                    path="/users/:userId"
+                    exact
+                    component={ParticipantPage}
+                />
                 <Route path="/favorites" exact component={Favorites} />
-                <Route path="/users/test" component={Test2} />
                 <Redirect to="/404" />
             </Switch>
         </>
