@@ -5,7 +5,6 @@ import ProgressBar from "./progressBar";
 import { pickIcon } from "../utils/pickIcon";
 
 const ParticipantPage = ({ user }) => {
-    // по заданию компонент progressBar должен принимать цвет. пришлось сделать вот такой вариант, который передает цвет в атрибут. компонент pickColor стал переиспользуемым
     const pickColorForTech = (technology) => {
         const colors = ["green", "primary", "yellow", "red", "cyan"];
         switch (technology) {
