@@ -1,14 +1,10 @@
 import React from "react";
-import userService from "../services/user.service";
+import MainPage from "../components/mainPage";
 
 function Main() {
-    const handleClick = async () => {
-        const data = await userService.getById("nhRt");
-        console.log("data", data);
-    };
     return (
         <div>
-            <button onClick={handleClick}>Получить пользователя</button>
+            <MainPage />
         </div>
     );
 }
