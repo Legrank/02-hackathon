@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserCard from "../userCard";
-import { stacks } from "../../api/stacs";
-import { developers } from "../../api/developers";
+import stacks from "../../api/stacs.json";
+import developers from "../../api/developers.json";
 import "./mainPage.css";
 
 const MainPage = () => {
@@ -22,7 +22,7 @@ const MainPage = () => {
                 <h5 className="main-title">Наш технологический стек</h5>
                 <div className="stacks">
                     {stacks.map((stack, index) => (
-                        <>
+                        <span key={stack.title}>
                             <a
                                 className="stac-a"
                                 key={stack.tit}
@@ -36,7 +36,7 @@ const MainPage = () => {
                                 className="bi bi-arrow-right-short"
                                 hidden={index === stacks.length - 1}
                             ></i>
-                        </>
+                        </span>
                     ))}
                 </div>
             </div>
