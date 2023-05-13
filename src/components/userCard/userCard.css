@@ -1,0 +1,44 @@
+.user-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: slideButton ease-out 2s;
+}
+.style-card {
+  width: 900px;
+}
+.style-content {
+  display: flex;
+  flex-direction: column;
+}
+.style-header-wrapper {
+  display: flex;
+}
+.style-header-wrapper>i {
+  margin-left: auto;
+  font-size: 24px;
+  cursor: pointer;
+}
+.style-div-image {
+  height: 200px;
+}
+.style-image {
+  height: 100%;
+}
+.style-button-wrapper{
+  align-self: end;
+}
+.style-button{
+  width: 100px;
+  background-color: darkgrey;
+}
+.style-button:hover {
+  background: black;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 2px black,
+              0 0 5px black,
+              0 0 10px black,
+              0 0 20px black;
+}

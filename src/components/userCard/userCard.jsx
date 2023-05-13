@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../components/button/button";
+import Button from "../button/button";
 import PropTypes from "prop-types";
-import "./mainPage.css";
+import "./userCard.css";
 import { useHistory } from "react-router-dom";
 
 const UserCard = ({ name, photo, age, about }) => {
@@ -38,7 +38,8 @@ const UserCard = ({ name, photo, age, about }) => {
                             <Button
                                 title="Открыть"
                                 onClick={handleClick}
-                                className="style-button"
+                                className="style-button-wrapper"
+                                classNameButton="style-button"
                             />
                         </div>
                     </div>

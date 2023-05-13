@@ -1,5 +1,5 @@
 import React from "react";
-import MainPage from "../developJulia/mainPage";
+import MainPage from "../components/mainPage";
 
 function Main() {
     return (

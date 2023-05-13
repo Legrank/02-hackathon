@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import UserCard from "./userCard";
-import { stacks } from "../api/stacs";
-import { developers } from "../api/developers";
+import UserCard from "../userCard";
+import { stacks } from "../../api/stacs";
+import { developers } from "../../api/developers";
+import "./mainPage.css";
 
 const MainPage = () => {
     const [users] = useState(developers);
