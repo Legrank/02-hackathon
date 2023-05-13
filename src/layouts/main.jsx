@@ -8,7 +8,7 @@ function Main() {
     };
     return (
         <div>
-            <button onClick={handleClick}>Создать</button>
+            <button onClick={handleClick}>Получить пользователя</button>
         </div>
     );
 }
