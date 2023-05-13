@@ -1,24 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { pickColor } from "../utils/pickColor";
 
 const ProgressBar = ({ value, color, name }) => {
-    const pickColor = (color) => {
-        switch (color) {
-            case "green":
-                return " bg-success";
-            case "cyan":
-                return " bg-info";
-            case "yellow":
-                return " bg-warning";
-            case "red":
-                return " bg-danger";
-            default:
-                return "";
-        }
-    };
-
     return (
-        <div className="progress">
+        <div className="progress" style={{ height: "30px" }}>
             <div
                 className={`progress-bar progress-bar-striped progress-bar-animated${pickColor(
                     color
