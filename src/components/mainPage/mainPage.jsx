@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import UserCard from "../userCard";
 import stacks from "../../api/stacs.json";
-import developers from "../../api/developers.json";
+// import developers from "../../api/developers.json";
+import { useSelector } from "react-redux";
 import "./mainPage.css";
+import { getUsersSelector } from "../../redux/users";
+import { parse } from "../../utils/localStorageFavourite";
 
 const MainPage = () => {
-    const [users] = useState(developers);
+    const users = useSelector(getUsersSelector());
+
+    const [favourite, setFavourite] = useState({});
+
+    useEffect(() => {
+        setFavourite(parse() ?? {});
+    }, []);
+
+    const handleFavouriteClick = (id) => {
+        setFavourite(prevState => {
+            const prevLS = parse() ?? {};
+            localStorage.setItem("favourite", JSON.stringify({...prevLS, [id]: !prevState[id]}));
+            return {...prevState, [id]: !prevState[id]};
+        })
+    };
 
     return (
         <div className="main-page">
@@ -42,9 +59,9 @@ const MainPage = () => {
             </div>
             <h5 className="main-title">Наша команда</h5>
             <div className="user-cards">
-                {users.map((user) => (
+                {users && Object.values(users).map((user) => (
                     <div key={user.name}>
-                        <UserCard {...user} />
+                        <UserCard {...user} onClick={handleFavouriteClick} isFavourite={favourite[user._id]} />
                     </div>
                 ))}
             </div>

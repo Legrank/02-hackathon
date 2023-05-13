@@ -3,15 +3,15 @@ import Button from "../button/button";
 import PropTypes from "prop-types";
 import "./userCard.css";
 import { useHistory } from "react-router-dom";
+import FavouriteButton from "../favouriteButton";
+// import { parse } from "../../utils/localStorageFavourite";
 
-const UserCard = ({ name, photo, age, about }) => {
+const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
     const history = useHistory();
     const handleClick = () => {
         history.push("/users");
     };
-    const handleFavouriteClick = () => {
-        console.log("Add to favourite");
-    };
+
     return (
         <>
             <div className="style-card">
@@ -27,10 +27,10 @@ const UserCard = ({ name, photo, age, about }) => {
                         <div className="style-content">
                             <div className="style-header-wrapper">
                                 <h3>{name}</h3>
-                                <i
-                                    onClick={handleFavouriteClick}
-                                    className="bi bi-bookmark-fill"
-                                ></i>
+                                <FavouriteButton
+                                    onClick={() => onClick(_id)}
+                                    active={isFavourite}
+                                />
                             </div>
                             <h5>Возраст: {age}</h5>
                             <h6>О себе:</h6>
@@ -48,11 +48,15 @@ const UserCard = ({ name, photo, age, about }) => {
         </>
     );
 };
+
 UserCard.propTypes = {
+    _id: PropTypes.string,
     name: PropTypes.string,
     photo: PropTypes.string,
     age: PropTypes.string,
     about: PropTypes.string,
+    onClick: PropTypes.func,
+    isFavourite: PropTypes.bool,
 };
 
 export default UserCard;
