@@ -1,26 +1,28 @@
 import React from "react";
+import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
-import ParticipantPage from "./components/participantPage";
+import NotFound from "./layouts/notFound";
+import NavBar from "./components/navBar";
+import Main from "./layouts/main";
+import Test1 from "./layouts/test1";
+import Breadcrumbs from "./components/breadcrumbs";
+import Test2 from "./layouts/test2";
+import Favorites from "./layouts/favorites";
 
 function App() {
-    const user = {
-        name: "Дмитрий Брижак",
-        age: "36",
-        photo: "",
-        about: "Программированием начал интересоваться лет 5 назад.  Сначала это было просто увлечение, но со временем я понял что это именно то, чем я хочу заниматься. Наблюдать за тем как написанные тобою строчки кода оживают это потрясающе!",
-        social: { telegtram: "https://t.me/legrank" },
-        tasksDone: "",
-        progress: { html: "50%", javaScript: "80%", css: "40%" },
-        badge: "Teamlead",
-        badgeColor: "primary",
-    };
-
+    const location = useLocation();
     return (
         <>
-            <div className="container">
-                <div className="App">Hackathon</div>
-                <ParticipantPage user={user} />
-            </div>
+            <NavBar />
+            <Breadcrumbs pathname={location.pathname} />
+            <Switch>
+                <Route path="/" exact component={Main} />
+                <Route path="/404" component={NotFound} />
+                <Route path="/users" exact component={Test1} />
+                <Route path="/favorites" exact component={Favorites} />
+                <Route path="/users/test" component={Test2} />
+                <Redirect to="/404" />
+            </Switch>
         </>
     );
 }
