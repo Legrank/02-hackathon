@@ -5,7 +5,11 @@ import "./button.css";
 const Button = ({ title, onClick, color, className }) => {
     return (
         <>
-            <button onClick={onClick} style={{backgroundColor: color}} className={`button ${className}`}>
+            <button
+                onClick={onClick}
+                style={{ backgroundColor: color }}
+                className={`${className || "button"}`}
+            >
                 {title}
             </button>
         </>
