@@ -1,0 +1,15 @@
+export const stacks = [
+    { title: "JavaScript", href: "https://learn.javascript.ru/" },
+    { title: "HTML", href: "https://developer.mozilla.org/ru/docs/Web/HTML" },
+    { title: "CSS", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+    { title: "React.js", href: "https://react.dev/" },
+    { title: "React Router v5/v6", href: "https://reactrouter.com/en/main" },
+    { title: "GIT", href: "https://git-scm.com/" },
+    { title: "Node.js", href: "https://nodejs.org/ru" },
+    { title: "Bootstrap", href: "https://getbootstrap.com/" },
+    { title: "Redux", href: "https://redux.js.org/" },
+    { title: "Redux Toolkit", href: "https://redux-toolkit.js.org/" },
+    { title: "Webpack", href: "https://webpack.js.org/" },
+    { title: "Rollup", href: "https://rollupjs.org/" },
+    { title: "Firebase", href: "https://firebase.google.com/" },
+];

@@ -1,7 +1,12 @@
 import React from "react";
+import MainPage from "../developJulia/mainPage";
 
 function Main() {
-    return <div>Main</div>;
+    return (
+        <div>
+            <MainPage />
+        </div>
+    );
 }
 
 export default Main;
