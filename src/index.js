@@ -6,15 +6,17 @@ import history from "./utils/history";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "./redux/createStore";
+import WithUsers from "./HOC/withUsers";
 
 const store = createStore();
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const AppWithUsers = WithUsers(App);
 
 root.render(
     <Router history={history}>
         <React.StrictMode>
             <Provider store={store}>
-                <App />
+                <AppWithUsers />
             </Provider>
         </React.StrictMode>
     </Router>

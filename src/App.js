@@ -1,25 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
 import NotFound from "./layouts/notFound";
 import NavBar from "./components/navBar";
 import Breadcrumbs from "./components/breadcrumbs";
 import Favorites from "./layouts/favorites";
-import { useDispatch } from "react-redux";
-import { loadUsersList } from "./redux/users";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
 import EditUser from "./layouts/editUser";
-import { loadSocialList } from "./redux/social";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-    const dispatch = useDispatch();
     const location = useLocation();
-
-    useEffect(() => {
-        dispatch(loadUsersList());
-        dispatch(loadSocialList());
-    }, []);
 
     return (
         <>
@@ -37,6 +30,7 @@ function App() {
                 <Route path="/favorites" exact component={Favorites} />
                 <Redirect to="/404" />
             </Switch>
+            <ToastContainer />
         </>
     );
 }

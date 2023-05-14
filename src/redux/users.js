@@ -1,5 +1,6 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 import userService from "../services/user.service";
+import { toast } from "react-toastify";
 
 const initialState = {
     entities: null,
@@ -26,6 +27,7 @@ const usersSlice = createSlice({
         usersRequestFailed: (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
+            toast("Loading error. Try again");
         },
         userUpdateRequestFailed: (state, action) => {
             state.error = action.payload;
