@@ -3,15 +3,20 @@ import Button from "../button/button";
 import PropTypes from "prop-types";
 import "./userCard.css";
 import { useHistory } from "react-router-dom";
+// import FavouriteButton from "../favouriteButton";
 
-const UserCard = ({ name, photo, age, about, _id }) => {
+const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
     const history = useHistory();
     const handleClick = () => {
         history.push(`/users/${_id}`);
     };
-    const handleFavouriteClick = () => {
-        console.log("Add to favourite");
+    const getClasses = () => {
+        return isFavourite ? " favorite" : "style-button";
     };
+    const getTitle = () => {
+        return isFavourite ? "Удалить с избранного" : "Добавить в избранное";
+    };
+
     return (
         <>
             <div className="style-card">
@@ -27,20 +32,24 @@ const UserCard = ({ name, photo, age, about, _id }) => {
                         <div className="style-content">
                             <div className="style-header-wrapper">
                                 <h3>{name}</h3>
-                                <i
-                                    onClick={handleFavouriteClick}
-                                    className="bi bi-bookmark-fill"
-                                ></i>
                             </div>
                             <h5>Возраст: {age}</h5>
                             <h6>О себе:</h6>
                             <h6>{about}</h6>
-                            <Button
-                                title="Открыть"
-                                onClick={handleClick}
-                                className="style-button-wrapper"
-                                classNameButton="style-button"
-                            />
+                            <div className="style-buttons">
+                                <Button
+                                    onClick={() => onClick(_id)}
+                                    title={getTitle()}
+                                    className="style-button-wrapper"
+                                    classNameButton={getClasses()}
+                                />
+                                <Button
+                                    title="Открыть"
+                                    onClick={handleClick}
+                                    className="style-button-wrapper"
+                                    classNameButton="style-button"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,12 +57,15 @@ const UserCard = ({ name, photo, age, about, _id }) => {
         </>
     );
 };
+
 UserCard.propTypes = {
     _id: PropTypes.string,
     name: PropTypes.string,
     photo: PropTypes.string,
     age: PropTypes.string,
     about: PropTypes.string,
+    onClick: PropTypes.func,
+    isFavourite: PropTypes.bool,
 };
 
 export default UserCard;

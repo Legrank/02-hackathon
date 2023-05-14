@@ -1,9 +1,10 @@
 import React from "react";
+import FavouriteUsers from "../components/favouriteUsers";
 
 function Favorites() {
     return (
         <div>
-            <h1>Favorites</h1>
+            <FavouriteUsers />
         </div>
     );
 }

@@ -29,16 +29,37 @@
 .style-button-wrapper{
   align-self: end;
 }
+.style-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+
+}
 .style-button{
-  width: 100px;
+  margin: 12px;
+  color: white;
   background-color: darkgrey;
+
+}
+.favorite {
+background-color: #c06d64;
+color: white;
+margin: 12px;
+}
+.favorite:hover {
+  background:  #c35e53;
+  color: aliceblue;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #c35e53,
+              0 0 5px #c35e53,
+              0 0 10px #c35e53,
+              0 0 20px #c35e53;
 }
 .style-button:hover {
-  background: black;
-  color: #fff;
+  background: #808080;
+  color: aliceblue;
   border-radius: 5px;
-  box-shadow: 0 0 2px black,
-              0 0 5px black,
-              0 0 10px black,
-              0 0 20px black;
+  box-shadow: 0 0 2px #696969,
+              0 0 5px #696969,
+              0 0 10px #696969,
+              0 0 20px #696969;
 }
