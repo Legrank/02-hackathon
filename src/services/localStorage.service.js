@@ -1,4 +1,4 @@
-export function setToggle(id,prevState) {
+export function setToggle(id, prevState) {
     const prevLS = parse() ?? {};
     return localStorage.setItem(
         "favourite",

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { getUsersById, updateUser } from "../redux/users";
@@ -12,9 +12,6 @@ import { getSocialList } from "../redux/social";
 import { nanoid } from "@reduxjs/toolkit";
 
 function EditUser() {
-    useEffect(() => {
-        console.log("render");
-    });
     const handleChange = useCallback((data) => {
         setData((prevState) => ({
             ...prevState,

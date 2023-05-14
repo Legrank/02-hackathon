@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ProgressBar from "../components/progressBar";
 import { pickIcon } from "../utils/pickIcon";
@@ -6,12 +6,27 @@ import { useSelector } from "react-redux";
 import { getUsersById } from "../redux/users";
 import { useHistory, useLocation, useParams } from "react-router";
 import Button from "../components/button/button";
+import { parse, setToggle } from "../services/localStorage.service";
 
 const ParticipantPage = () => {
+    const favourite = parse() || {};
+    const { userId } = useParams();
+    const [isFavourite, setFavourite] = useState(
+        favourite ? favourite[userId] : false
+    );
     const handleClick = () => {
         history.push(`${location.pathname}/edit`);
     };
-    const { userId } = useParams();
+    const getClasses = () => {
+        return isFavourite ? " favorite" : "style-button";
+    };
+    const getTitle = () => {
+        return isFavourite ? "Удалить с избранного" : "Добавить в избранное";
+    };
+    const toggleFav = (id) => {
+        setFavourite((prev) => !prev);
+        setToggle(id, favourite);
+    };
     const history = useHistory();
     const location = useLocation();
     const user = useSelector(getUsersById(userId));
@@ -50,6 +65,12 @@ const ParticipantPage = () => {
                 </div>
                 <div className="d-flex flex-column justify-content-between container">
                     <div>
+                        <Button
+                            onClick={() => toggleFav(userId)}
+                            title={getTitle()}
+                            className="style-button-wrapper"
+                            classNameButton={getClasses()}
+                        />
                         <h1 className="display-1 md-4">{user.name}</h1>
                         <h3>Возраст: {user.age}</h3>
                         <h4>О себе:</h4>

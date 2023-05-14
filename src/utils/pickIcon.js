@@ -4,10 +4,8 @@
  * @returns string className
  */
 export const pickIcon = (socialmedia) => {
-    console.log("socialmedia", socialmedia);
     switch (socialmedia) {
         case "telegram":
-            console.log("dfgdf", socialmedia);
             return "bi bi-telegram";
         case "whatsapp":
             return "bi bi-whatsapp";
