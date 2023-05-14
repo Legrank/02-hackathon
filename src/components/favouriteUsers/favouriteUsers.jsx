@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { parse } from "../../utils/localStorageFavourite";
+import { parse, setToggle } from "../../services/localStorage.service";
 import UserCard from "../userCard";
 import { useSelector } from "react-redux";
 import { getUsersSelector } from "../../redux/users";
@@ -15,11 +15,7 @@ const FavouriteUsers = () => {
 
     const handleFavouriteClick = (id) => {
         setFavourite((prevState) => {
-            const prevLS = parse() ?? {};
-            localStorage.setItem(
-                "favourite",
-                JSON.stringify({ ...prevLS, [id]: !prevState[id] })
-            );
+            setToggle(id, prevState);
             return { ...prevState, [id]: !prevState[id] };
         });
     };

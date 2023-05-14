@@ -3,13 +3,18 @@ import Button from "../button/button";
 import PropTypes from "prop-types";
 import "./userCard.css";
 import { useHistory } from "react-router-dom";
-import FavouriteButton from "../favouriteButton";
-// import { parse } from "../../utils/localStorageFavourite";
+// import FavouriteButton from "../favouriteButton";
 
 const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
     const history = useHistory();
     const handleClick = () => {
         history.push("/users");
+    };
+    const getClasses = () => {
+        return isFavourite ? " favorite" : "style-button";
+    };
+    const getTitle = () => {
+        return isFavourite ? "Удалить с избранного" : "Добавить в избранное";
     };
 
     return (
@@ -27,20 +32,24 @@ const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
                         <div className="style-content">
                             <div className="style-header-wrapper">
                                 <h3>{name}</h3>
-                                <FavouriteButton
-                                    onClick={() => onClick(_id)}
-                                    active={isFavourite}
-                                />
                             </div>
                             <h5>Возраст: {age}</h5>
                             <h6>О себе:</h6>
                             <h6>{about}</h6>
-                            <Button
-                                title="Открыть"
-                                onClick={handleClick}
-                                className="style-button-wrapper"
-                                classNameButton="style-button"
-                            />
+                            <div className="style-buttons">
+                                <Button
+                                    onClick={() => onClick(_id)}
+                                    title={getTitle()}
+                                    className="style-button-wrapper"
+                                    classNameButton={getClasses()}
+                                />
+                                <Button
+                                    title="Открыть"
+                                    onClick={handleClick}
+                                    className="style-button-wrapper"
+                                    classNameButton="style-button"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
