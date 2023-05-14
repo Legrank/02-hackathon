@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ProgressBar from "../components/progressBar";
+import ProgressBar from "../components/ui/progressBar";
 import { pickIcon } from "../utils/pickIcon";
 import { useSelector } from "react-redux";
 import { getUsersById } from "../redux/users";
 import { useHistory, useLocation, useParams } from "react-router";
-import Button from "../components/button/button";
+import Button from "../components/common/button";
 import { parse, setToggle } from "../services/localStorage.service";
 
 const ParticipantPage = () => {

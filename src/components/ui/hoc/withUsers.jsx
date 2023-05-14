@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUsersList } from "../redux/users";
-import { loadSocialList } from "../redux/social";
+import { loadUsersList } from "../../../redux/users";
+import { loadSocialList } from "../../../redux/social";
 
 const WithUsers = (Component) => (props) => {
     const dispatch = useDispatch();

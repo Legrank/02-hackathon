@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { parse, setToggle } from "../../services/localStorage.service";
-import UserCard from "../userCard";
 import { useSelector } from "react-redux";
-import { getUsersSelector } from "../../redux/users";
+import { parse, setToggle } from "../../../services/localStorage.service";
+import UserCard from "../../ui/userCard";
+import { getUsersSelector } from "../../../redux/users";
 
 const FavouriteUsers = () => {
     const users = useSelector(getUsersSelector());

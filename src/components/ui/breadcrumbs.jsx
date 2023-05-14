@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getUsersById } from "../redux/users";
+import { getUsersById } from "../../redux/users";
 
 function Breadcrumbs({ pathname }) {
     const segments = pathname === "/" ? [""] : pathname.split("/");

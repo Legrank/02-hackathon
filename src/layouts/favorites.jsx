@@ -1,5 +1,5 @@
 import React from "react";
-import FavouriteUsers from "../components/favouriteUsers";
+import FavouriteUsers from "../components/page/favouriteUsers";
 
 function Favorites() {
     return (

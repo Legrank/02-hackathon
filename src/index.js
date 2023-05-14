@@ -6,7 +6,7 @@ import history from "./utils/history";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "./redux/createStore";
-import WithUsers from "./HOC/withUsers";
+import WithUsers from "./components/ui/hoc/withUsers";
 
 const store = createStore();
 const root = ReactDOM.createRoot(document.getElementById("root"));

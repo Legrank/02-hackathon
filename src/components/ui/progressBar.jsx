@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { pickColor } from "../utils/pickColor";
+import { pickColor } from "../../utils/pickColor";
 
 const ProgressBar = ({ value, color, name }) => {
     return (

@@ -7,7 +7,7 @@ import {
     TextField,
     TextareaField,
 } from "../components/common/form";
-import Button from "../components/button/button";
+import Button from "../components/common/button/button";
 import { getSocialList } from "../redux/social";
 import { nanoid } from "@reduxjs/toolkit";
 
