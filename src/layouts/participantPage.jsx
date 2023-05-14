@@ -56,26 +56,26 @@ const ParticipantPage = () => {
                         <h5>{user.about}</h5>
                         <div className="md-4">
                             <h2>Socialmedia links:</h2>
-                            {Object.keys(user.social).map((key) => {
-                                return key === "vk" ? (
+                            {user.social.map(({ _id, value, name }) => {
+                                return name === "vk" ? (
                                     <a
                                         target="_blank"
                                         rel="noreferrer"
-                                        key={key}
-                                        href={user.social[key]}
+                                        key={_id}
+                                        href={value}
                                     >
-                                        <h1>{key}</h1>
+                                        <h1>{name}</h1>
                                     </a>
                                 ) : (
                                     <a
                                         target="_blank"
                                         rel="noreferrer"
-                                        key={key}
-                                        href={user.social[key]}
+                                        key={_id}
+                                        href={value}
                                     >
                                         <h1>
                                             <i
-                                                className={`${pickIcon(key)}`}
+                                                className={`${pickIcon(name)}`}
                                                 aria-hidden="true"
                                             />
                                         </h1>
@@ -97,13 +97,15 @@ const ParticipantPage = () => {
                             })}
                         </div>
                     </div>
-                    <div>
-                        <h1>
-                            <span className={`badge bg-secondary`}>
-                                {user.badge}
-                            </span>
-                        </h1>
-                    </div>
+                    {user.badge && (
+                        <div>
+                            <h1>
+                                <span className={`badge bg-secondary`}>
+                                    {user.badge}
+                                </span>
+                            </h1>
+                        </div>
+                    )}
                     <Button title="Изменить" onClick={handleClick} />
                 </div>
             </div>

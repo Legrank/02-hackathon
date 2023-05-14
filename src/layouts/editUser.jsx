@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { getUsersById, updateUser } from "../redux/users";
 import {
     SelectField,
@@ -12,6 +12,9 @@ import { getSocialList } from "../redux/social";
 import { nanoid } from "@reduxjs/toolkit";
 
 function EditUser() {
+    useEffect(() => {
+        console.log("render");
+    });
     const handleChange = useCallback((data) => {
         setData((prevState) => ({
             ...prevState,
@@ -22,7 +25,7 @@ function EditUser() {
         setData((prevState) => {
             const { social } = prevState;
             const newSocial = [...social];
-            newSocial[i] = data;
+            newSocial[i] = { ...social[i], ...data };
             return { ...prevState, social: newSocial };
         });
     }, []);
@@ -37,12 +40,24 @@ function EditUser() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(updateUser(data));
-        console.log("data", data);
+        history.push(`/users/${userId}`);
     };
     const addSocial = () => {
         setData((prevState) => {
-            // const { social } = prevState;
-            const newSocial = [{ name: "telegram", value: "", _id: nanoid(6) }];
+            const { social } = prevState;
+            const newSocial = [...social];
+            newSocial.push({ name: "whatsapp", value: "", _id: nanoid(6) });
+            return {
+                ...prevState,
+                social: newSocial,
+            };
+        });
+    };
+    const deleteSocial = (id) => {
+        setData((prevState) => {
+            const { social } = prevState;
+            const newSocial = [...social];
+            newSocial.splice(id, 1);
             return {
                 ...prevState,
                 social: newSocial,
@@ -52,6 +67,7 @@ function EditUser() {
 
     const dispatch = useDispatch();
     const { userId } = useParams();
+    const history = useHistory();
     const user = useSelector(getUsersById(userId));
     const socialList = useSelector(getSocialList());
     const [data, setData] = useState(user || {});
@@ -72,13 +88,13 @@ function EditUser() {
                 />
                 <TextField
                     onChange={handleChange}
-                    label="Заметка"
+                    label="Badge"
                     name="badge"
                     value={data.badge}
                 />
                 {data.social &&
-                    data.social.map(({ name, value }, i) => (
-                        <div key={name} className="d-flex">
+                    data.social.map(({ name, value, _id }, i) => (
+                        <div key={_id} className="d-flex align-items-baseline">
                             <SelectField
                                 options={socialList}
                                 label="Выбирите название"
@@ -95,6 +111,13 @@ function EditUser() {
                                 value={value}
                                 className="flex-grow-1 ms-2"
                             />
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Закрыть"
+                                onClick={() => deleteSocial(i)}
+                            ></button>
                         </div>
                     ))}
                 <Button type="button" title="Добавить" onClick={addSocial} />
@@ -104,6 +127,12 @@ function EditUser() {
                     label="О себе"
                     name="about"
                     value={data.about}
+                />
+                <TextareaField
+                    onChange={handleChange}
+                    label="Чем занимался"
+                    name="tasksDone"
+                    value={data.tasksDone}
                 />
                 <Button type="submit" title="Сохранить" />
             </form>
