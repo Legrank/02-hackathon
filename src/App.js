@@ -28,7 +28,7 @@ function App() {
                 />
                 <Route path="/users/:userId/edit" exact component={EditUser} />
                 <Route path="/favorites" exact component={Favorites} />
-                <Redirect to="/404" />
+                <Redirect to="/" />
             </Switch>
             <ToastContainer />
         </>
