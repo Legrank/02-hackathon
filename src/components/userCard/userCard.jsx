@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
     const history = useHistory();
     const handleClick = () => {
-        history.push("/users");
+        history.push(`/users/${_id}`);
     };
     const getClasses = () => {
         return isFavourite ? " favorite" : "style-button";

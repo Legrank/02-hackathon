@@ -15,9 +15,8 @@ const NavBar = () => {
         </li>
     );
     const links = [
-        { path: "/", name: "Main" },
-        { path: "/users", name: "Users" },
-        { path: "/favorites", name: "Favorites" },
+        { path: "/", name: "Главная" },
+        { path: "/favorites", name: "Избранное" },
     ];
     return (
         <nav className="navbar">

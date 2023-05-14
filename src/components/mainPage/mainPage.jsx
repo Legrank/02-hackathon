@@ -4,7 +4,7 @@ import stacks from "../../api/stacs.json";
 import { useSelector } from "react-redux";
 import "./mainPage.css";
 import { getUsersSelector } from "../../redux/users";
-import { parse , setToggle} from "../../services/localStorage.service";
+import { parse, setToggle } from "../../services/localStorage.service";
 
 const MainPage = () => {
     const users = useSelector(getUsersSelector());
@@ -17,7 +17,7 @@ const MainPage = () => {
 
     const handleFavouriteClick = (id) => {
         setFavourite((prevState) => {
-            setToggle(id, prevState)
+            setToggle(id, prevState);
             return { ...prevState, [id]: !prevState[id] };
         });
     };
