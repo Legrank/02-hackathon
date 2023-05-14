@@ -7,6 +7,7 @@ import Breadcrumbs from "./components/breadcrumbs";
 import Favorites from "./layouts/favorites";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
+import EditUser from "./layouts/editUser";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -25,6 +26,7 @@ function App() {
                     exact
                     component={ParticipantPage}
                 />
+                <Route path="/users/:userId/edit" exact component={EditUser} />
                 <Route path="/favorites" exact component={Favorites} />
                 <Redirect to="/404" />
             </Switch>

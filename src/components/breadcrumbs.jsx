@@ -6,7 +6,10 @@ import { getUsersById } from "../redux/users";
 
 function Breadcrumbs({ pathname }) {
     const segments = pathname === "/" ? [""] : pathname.split("/");
-    const user = useSelector(getUsersById(segments[segments.length - 1]));
+    const indexBeforeUserId = segments.findIndex(
+        (segment) => segment === "users"
+    );
+    const user = useSelector(getUsersById(segments[indexBeforeUserId + 1]));
     const firstUpperCase = (str) =>
         str[0].toUpperCase() + str.slice(1).toLowerCase();
     const transformSegmrntToDisplayName = (segment) => {
@@ -15,6 +18,8 @@ function Breadcrumbs({ pathname }) {
                 return "Избранное";
             case "users":
                 return "Команда";
+            case "edit":
+                return "Изменение данных";
             default:
                 return user ? user.name : firstUpperCase(segment);
         }

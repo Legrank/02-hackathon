@@ -2,13 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./button.css";
 
-const Button = ({ title, onClick, color, className, classNameButton }) => {
+const Button = ({
+    title,
+    onClick,
+    color,
+    className,
+    classNameButton,
+    ...rest
+}) => {
     return (
         <div className={className}>
             <button
                 onClick={onClick}
                 style={{ backgroundColor: color }}
                 className={`${classNameButton} button`}
+                {...rest}
             >
                 {title}
             </button>

@@ -4,10 +4,16 @@ import ProgressBar from "../components/progressBar";
 import { pickIcon } from "../utils/pickIcon";
 import { useSelector } from "react-redux";
 import { getUsersById } from "../redux/users";
-import { useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
+import Button from "../components/button/button";
 
 const ParticipantPage = () => {
+    const handleClick = () => {
+        history.push(`${location.pathname}/edit`);
+    };
     const { userId } = useParams();
+    const history = useHistory();
+    const location = useLocation();
     const user = useSelector(getUsersById(userId));
     if (!user) return "Загрузка";
     const pickColorForTech = (technology) => {
@@ -36,7 +42,7 @@ const ParticipantPage = () => {
             <div className="shadow p-4 d-flex">
                 <div>
                     <img
-                        src={IMG_URL}
+                        src={user.photo || IMG_URL}
                         width="400px"
                         height="700px"
                         alt="pizza"
@@ -48,34 +54,39 @@ const ParticipantPage = () => {
                         <h3>Возраст: {user.age}</h3>
                         <h4>О себе:</h4>
                         <h5>{user.about}</h5>
+                        <h4>Чем занимался в разработке проекта:</h4>
+                        <h5>{user.tasksDone}</h5>
                         <div className="md-4">
                             <h2>Socialmedia links:</h2>
-                            {Object.keys(user.social).map((key) => {
-                                return key === "vk" ? (
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        key={key}
-                                        href={user.social[key]}
-                                    >
-                                        <h1>{key}</h1>
-                                    </a>
-                                ) : (
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        key={key}
-                                        href={user.social[key]}
-                                    >
-                                        <h1>
-                                            <i
-                                                className={`${pickIcon(key)}`}
-                                                aria-hidden="true"
-                                            />
-                                        </h1>
-                                    </a>
-                                );
-                            })}
+                            {user.social &&
+                                user.social.map(({ _id, value, name }) => {
+                                    return name === "vk" ? (
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            key={_id}
+                                            href={value}
+                                        >
+                                            <h1>{name}</h1>
+                                        </a>
+                                    ) : (
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            key={_id}
+                                            href={value}
+                                        >
+                                            <h1>
+                                                <i
+                                                    className={`${pickIcon(
+                                                        name
+                                                    )}`}
+                                                    aria-hidden="true"
+                                                />
+                                            </h1>
+                                        </a>
+                                    );
+                                })}
                         </div>
                         <div className="md-4">
                             <h4>Прогресс изучения технологий:</h4>
@@ -91,13 +102,16 @@ const ParticipantPage = () => {
                             })}
                         </div>
                     </div>
-                    <div>
-                        <h1>
-                            <span className={`badge bg-${user.badgeColor}`}>
-                                {user.badge}
-                            </span>
-                        </h1>
-                    </div>
+                    {user.badge && (
+                        <div>
+                            <h1>
+                                <span className={`badge bg-secondary`}>
+                                    {user.badge}
+                                </span>
+                            </h1>
+                        </div>
+                    )}
+                    <Button title="Изменить" onClick={handleClick} />
                 </div>
             </div>
         </>
