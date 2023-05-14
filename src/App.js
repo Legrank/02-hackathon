@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
 import NotFound from "./layouts/notFound";
 import NavBar from "./components/navBar";
 import Breadcrumbs from "./components/breadcrumbs";
 import Favorites from "./layouts/favorites";
-import { useDispatch } from "react-redux";
-import { loadUsersList } from "./redux/users";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
 
 function App() {
-    const dispatch = useDispatch();
     const location = useLocation();
-
-    useEffect(() => {
-        dispatch(loadUsersList());
-    }, []);
 
     return (
         <>
