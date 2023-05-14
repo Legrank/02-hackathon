@@ -10,6 +10,7 @@ import { loadUsersList } from "./redux/users";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
 import EditUser from "./layouts/editUser";
+import { loadSocialList } from "./redux/social";
 
 function App() {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function App() {
 
     useEffect(() => {
         dispatch(loadUsersList());
+        dispatch(loadSocialList());
     }, []);
 
     return (

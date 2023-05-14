@@ -6,7 +6,10 @@ import { getUsersById } from "../redux/users";
 
 function Breadcrumbs({ pathname }) {
     const segments = pathname === "/" ? [""] : pathname.split("/");
-    const user = useSelector(getUsersById(segments[segments.length - 1]));
+    const indexBeforeUserId = segments.findIndex(
+        (segment) => segment === "users"
+    );
+    const user = useSelector(getUsersById(segments[indexBeforeUserId + 1]));
     const firstUpperCase = (str) =>
         str[0].toUpperCase() + str.slice(1).toLowerCase();
     const transformSegmrntToDisplayName = (segment) => {

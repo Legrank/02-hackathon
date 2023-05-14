@@ -1,3 +1,4 @@
 import TextField from "./textField";
 import TextareaField from "./textareaField";
-export { TextField, TextareaField };
+import SelectField from "./selectField";
+export { TextField, TextareaField, SelectField };

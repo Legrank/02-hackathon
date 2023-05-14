@@ -99,7 +99,7 @@ const ParticipantPage = () => {
                     </div>
                     <div>
                         <h1>
-                            <span className={`badge bg-${user.badgeColor}`}>
+                            <span className={`badge bg-secondary`}>
                                 {user.badge}
                             </span>
                         </h1>
