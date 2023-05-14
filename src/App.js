@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { loadUsersList } from "./redux/users";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
+import EditUser from "./layouts/editUser";
 
 function App() {
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
                     exact
                     component={ParticipantPage}
                 />
+                <Route path="/users/:userId/edit" exact component={EditUser} />
                 <Route path="/favorites" exact component={Favorites} />
                 <Redirect to="/404" />
             </Switch>

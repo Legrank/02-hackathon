@@ -4,10 +4,16 @@ import ProgressBar from "../components/progressBar";
 import { pickIcon } from "../utils/pickIcon";
 import { useSelector } from "react-redux";
 import { getUsersById } from "../redux/users";
-import { useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
+import Button from "../components/button/button";
 
 const ParticipantPage = () => {
+    const handleClick = () => {
+        history.push(`${location.pathname}/edit`);
+    };
     const { userId } = useParams();
+    const history = useHistory();
+    const location = useLocation();
     const user = useSelector(getUsersById(userId));
     if (!user) return "Загрузка";
     const pickColorForTech = (technology) => {
@@ -36,7 +42,7 @@ const ParticipantPage = () => {
             <div className="shadow p-4 d-flex">
                 <div>
                     <img
-                        src={IMG_URL}
+                        src={user.photo || IMG_URL}
                         width="400px"
                         height="700px"
                         alt="pizza"
@@ -98,6 +104,7 @@ const ParticipantPage = () => {
                             </span>
                         </h1>
                     </div>
+                    <Button title="Изменить" onClick={handleClick} />
                 </div>
             </div>
         </>

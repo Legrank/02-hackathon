@@ -15,6 +15,8 @@ function Breadcrumbs({ pathname }) {
                 return "Избранное";
             case "users":
                 return "Команда";
+            case "edit":
+                return "Изменение данных";
             default:
                 return user ? user.name : firstUpperCase(segment);
         }
