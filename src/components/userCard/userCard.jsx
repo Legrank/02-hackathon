@@ -3,7 +3,6 @@ import Button from "../button/button";
 import PropTypes from "prop-types";
 import "./userCard.css";
 import { useHistory } from "react-router-dom";
-// import FavouriteButton from "../favouriteButton";
 
 const UserCard = ({ _id, name, photo, age, about, onClick, isFavourite }) => {
     const history = useHistory();
