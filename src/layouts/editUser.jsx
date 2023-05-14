@@ -45,7 +45,7 @@ function EditUser() {
     const addSocial = () => {
         setData((prevState) => {
             const { social } = prevState;
-            const newSocial = [...social];
+            const newSocial = social ? [...social] : [];
             newSocial.push({ name: "whatsapp", value: "", _id: nanoid(6) });
             return {
                 ...prevState,

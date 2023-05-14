@@ -54,34 +54,39 @@ const ParticipantPage = () => {
                         <h3>Возраст: {user.age}</h3>
                         <h4>О себе:</h4>
                         <h5>{user.about}</h5>
+                        <h4>Чем занимался в разработке проекта:</h4>
+                        <h5>{user.tasksDone}</h5>
                         <div className="md-4">
                             <h2>Socialmedia links:</h2>
-                            {user.social.map(({ _id, value, name }) => {
-                                return name === "vk" ? (
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        key={_id}
-                                        href={value}
-                                    >
-                                        <h1>{name}</h1>
-                                    </a>
-                                ) : (
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        key={_id}
-                                        href={value}
-                                    >
-                                        <h1>
-                                            <i
-                                                className={`${pickIcon(name)}`}
-                                                aria-hidden="true"
-                                            />
-                                        </h1>
-                                    </a>
-                                );
-                            })}
+                            {user.social &&
+                                user.social.map(({ _id, value, name }) => {
+                                    return name === "vk" ? (
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            key={_id}
+                                            href={value}
+                                        >
+                                            <h1>{name}</h1>
+                                        </a>
+                                    ) : (
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            key={_id}
+                                            href={value}
+                                        >
+                                            <h1>
+                                                <i
+                                                    className={`${pickIcon(
+                                                        name
+                                                    )}`}
+                                                    aria-hidden="true"
+                                                />
+                                            </h1>
+                                        </a>
+                                    );
+                                })}
                         </div>
                         <div className="md-4">
                             <h4>Прогресс изучения технологий:</h4>

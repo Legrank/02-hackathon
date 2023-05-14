@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import socialService from "../services/social.service";
 
 const initialState = {
-    entities: null,
+    entities: [],
     isLoading: true,
     error: null,
 };
@@ -15,7 +15,7 @@ const socialSlice = createSlice({
             state.isLoading = true;
         },
         socialReceived: (state, action) => {
-            state.entities = action.payload;
+            state.entities = action.payload || [];
             state.isLoading = false;
         },
         socialRequestFailed: (state, action) => {
