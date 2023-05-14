@@ -1,6 +1,7 @@
 import React from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
+import NotFound from "./layouts/notFound";
 import NavBar from "./components/navBar";
 import Breadcrumbs from "./components/breadcrumbs";
 import Favorites from "./layouts/favorites";
@@ -19,7 +20,7 @@ function App() {
             <Breadcrumbs pathname={location.pathname} />
             <Switch>
                 <Route path="/" exact component={Main} />
-
+                <Route path="/404" component={NotFound} />
                 <Route
                     path="/users/:userId"
                     exact
@@ -27,6 +28,7 @@ function App() {
                 />
                 <Route path="/users/:userId/edit" exact component={EditUser} />
                 <Route path="/favorites" exact component={Favorites} />
+                <Redirect to="/404" />
             </Switch>
             <ToastContainer />
         </>
