@@ -7,6 +7,8 @@ import Breadcrumbs from "./components/breadcrumbs";
 import Favorites from "./layouts/favorites";
 import ParticipantPage from "./layouts/participantPage";
 import Main from "./layouts/main";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     const location = useLocation();
@@ -26,6 +28,7 @@ function App() {
                 <Route path="/favorites" exact component={Favorites} />
                 <Redirect to="/404" />
             </Switch>
+            <ToastContainer />
         </>
     );
 }

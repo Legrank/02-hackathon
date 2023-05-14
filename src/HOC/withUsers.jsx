@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsersSelector, loadUsersList } from "../redux/users";
+import { loadUsersList } from "../redux/users";
 
 const WithUsers = (Component) => (props) => {
     const dispatch = useDispatch();
+    const loadingStatus = useSelector((state) => state.users.isLoading);
     useEffect(() => {
         dispatch(loadUsersList());
     }, []);
-    const users = useSelector(getUsersSelector());
-    if (users.length === 0) {
+
+    if (loadingStatus) {
         return <h1>Loading...</h1>;
     }
     return (
